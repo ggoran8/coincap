@@ -30,7 +30,7 @@ function App() {
 							<th className='number'>Rank</th>
 							<th className='name'>Name</th>
 							<th className='rank'>Price in USD</th>
-							<th className='history'>History</th>
+							<th className='history'>Value change in the last 24h</th>
 						</thead>
 						<tbody>
 							<td>
@@ -50,7 +50,16 @@ function App() {
 							<td>
 								{findCurr.map((item) => (
 									<tr>
-										<td className='tData'>{item.priceUsd}$</td>
+										<td className='tData'>{item.priceUsd.slice(0, 10)}$</td>
+									</tr>
+								))}
+							</td>
+							<td>
+								{findCurr.map((item) => (
+									<tr>
+										<td className='tData'>
+											{item.changePercent24Hr.slice(0, 10)}
+										</td>
 									</tr>
 								))}
 							</td>
