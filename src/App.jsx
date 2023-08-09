@@ -29,7 +29,7 @@ function App() {
 						<thead>
 							<th className='number'>Rank</th>
 							<th className='name'>Name</th>
-							<th className='rank'>Rank</th>
+							<th className='rank'>Price in USD</th>
 							<th className='history'>History</th>
 						</thead>
 						<tbody>
@@ -44,6 +44,13 @@ function App() {
 								{findCurr.map((item) => (
 									<tr>
 										<td className='tData'>{item.name}</td>
+									</tr>
+								))}
+							</td>
+							<td>
+								{findCurr.map((item) => (
+									<tr>
+										<td className='tData'>{item.priceUsd}$</td>
 									</tr>
 								))}
 							</td>
