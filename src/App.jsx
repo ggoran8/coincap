@@ -50,18 +50,22 @@ function App() {
 							<td>
 								{findCurr.map((item) => (
 									<tr>
-										<td className='tData'>{item.priceUsd.slice(0, 10)}$</td>
+										<td className='tData'>${item.priceUsd}</td>
 									</tr>
 								))}
 							</td>
 							<td>
-								{findCurr.map((item) => (
-									<tr>
-										<td className='tData'>
-											{item.changePercent24Hr.slice(0, 10)}
-										</td>
-									</tr>
-								))}
+								{findCurr.map((item) =>
+									item.changePercent24Hr === null ? (
+										<tr>
+											<td>No data.</td>
+										</tr>
+									) : (
+										<tr>
+											<td className='tData'>{item.changePercent24Hr}$</td>
+										</tr>
+									)
+								)}
 							</td>
 						</tbody>
 					</table>
