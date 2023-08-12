@@ -48,11 +48,19 @@ function App() {
 								))}
 							</td>
 							<td>
-								{findCurr.map((item) => (
-									<tr>
-										<td className='tData'>${item.priceUsd}</td>
-									</tr>
-								))}
+								{findCurr.map((item) =>
+									item.priceUsd === null ? (
+										<tr>
+											<td>No data.</td>
+										</tr>
+									) : (
+										<tr>
+											<td className='tData'>
+												${item.priceUsd.toString().slice(0, 8)}
+											</td>
+										</tr>
+									)
+								)}
 							</td>
 							<td>
 								{findCurr.map((item) =>
@@ -62,7 +70,9 @@ function App() {
 										</tr>
 									) : (
 										<tr>
-											<td className='tData'>{item.changePercent24Hr}$</td>
+											<td className='tData'>
+												{item.changePercent24Hr.toString().slice(0, 8)}$
+											</td>
 										</tr>
 									)
 								)}
