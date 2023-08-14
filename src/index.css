@@ -12,6 +12,10 @@ code {
 		monospace;
 }
 
+.app {
+	min-height: 100vh;
+}
+
 /* table,
 th,
 td {
