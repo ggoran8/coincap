@@ -12,7 +12,7 @@ code {
 		monospace;
 }
 
-table,
+/* table,
 th,
 td {
 	text-align: center;
@@ -35,4 +35,14 @@ td {
 
 tr:nth-child(even) {
 	background-color: rgb(222, 221, 221);
+} */
+
+.wholeTable {
+	width: 50%;
+	margin: 0 auto;
+	border: 1px solid black;
+}
+
+div {
+	background-color: #191937;
 }

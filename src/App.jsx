@@ -82,7 +82,7 @@ function App() {
 			/>
 			{findCurr ? (
 				<div className='wholeTable'>
-					<table>
+					<table class='table table-dark  table-hover'>
 						<thead>
 							<th className='number' onClick={() => sortRank('rank')}>
 								Rank
