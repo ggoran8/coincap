@@ -74,26 +74,37 @@ function App() {
 
 	return (
 		<div className='app'>
-			<input
-				type='text'
-				placeholder='Search crypto'
-				value={inputValue}
-				onChange={(e) => setInputValue(e.target.value)}
-			/>
+			<div className='input'>
+				<input
+					type='text'
+					placeholder='Search for specific cryptocurrency'
+					value={inputValue}
+					onChange={(e) => setInputValue(e.target.value)}
+				/>
+			</div>
 			{findCurr ? (
 				<div className='wholeTable'>
 					<table class='table table-dark  table-hover'>
 						<thead>
-							<th className='number' onClick={() => sortRank('rank')}>
+							<th
+								scope='col'
+								className='number'
+								onClick={() => sortRank('rank')}
+							>
 								Rank
 							</th>
-							<th className='name' onClick={() => sorting('name')}>
+							<th scope='col' className='name' onClick={() => sorting('name')}>
 								Name
 							</th>
-							<th className='rank' onClick={() => sortPrice('priceUsd')}>
+							<th
+								scope='col'
+								className='rank'
+								onClick={() => sortPrice('priceUsd')}
+							>
 								Price in USD
 							</th>
 							<th
+								scope='col'
 								className='history'
 								onClick={() => sortRateChange('changePercent24Hr')}
 							>
@@ -104,7 +115,9 @@ function App() {
 							<td>
 								{findCurr.map((item) => (
 									<tr>
-										<td className='number'>{item.rank}</td>
+										<th scope='row' className='number'>
+											{item.rank}
+										</th>
 									</tr>
 								))}
 							</td>

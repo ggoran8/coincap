@@ -40,9 +40,22 @@ tr:nth-child(even) {
 .wholeTable {
 	width: 50%;
 	margin: 0 auto;
-	border: 1px solid black;
 }
 
 div {
 	background-color: #191937;
+}
+
+.input {
+	text-align: center;
+	padding: 16px;
+}
+
+input {
+	width: 25%;
+	background-color: #9f9fb4;
+}
+
+input::placeholder {
+	color: black;
 }
