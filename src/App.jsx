@@ -3,6 +3,63 @@ import { useEffect, useState } from 'react';
 function App() {
 	const [inputValue, setInputValue] = useState('');
 	const [findCurr, setFindCurr] = useState();
+	const [order, setOrder] = useState('asc');
+
+	const sorting = (col) => {
+		if (order === 'asc') {
+			const sorted = [...findCurr].sort((a, b) => (a[col] > b[col] ? 1 : -1));
+			setFindCurr(sorted);
+			setOrder('dsc');
+		}
+		if (order === 'dsc') {
+			const sorted = [...findCurr].sort((a, b) => (a[col] < b[col] ? 1 : -1));
+			setFindCurr(sorted);
+			setOrder('asc');
+		}
+	};
+
+	const sortRank = () => {
+		if (order === 'asc') {
+			const sorted = [...findCurr].sort((a, b) => a.rank - b.rank);
+			setFindCurr(sorted);
+			setOrder('dsc');
+		}
+		if (order === 'dsc') {
+			const sorted = [...findCurr].sort((a, b) => b.rank - a.rank);
+			setFindCurr(sorted);
+			setOrder('asc');
+		}
+	};
+
+	const sortPrice = () => {
+		if (order === 'asc') {
+			const sorted = [...findCurr].sort((a, b) => a.priceUsd - b.priceUsd);
+			setFindCurr(sorted);
+			setOrder('dsc');
+		}
+		if (order === 'dsc') {
+			const sorted = [...findCurr].sort((a, b) => b.priceUsd - a.priceUsd);
+			setFindCurr(sorted);
+			setOrder('asc');
+		}
+	};
+
+	const sortRateChange = () => {
+		if (order === 'asc') {
+			const sorted = [...findCurr].sort(
+				(a, b) => a.changePercent24Hr - b.changePercent24Hr
+			);
+			setFindCurr(sorted);
+			setOrder('dsc');
+		}
+		if (order === 'dsc') {
+			const sorted = [...findCurr].sort(
+				(a, b) => b.changePercent24Hr - a.changePercent24Hr
+			);
+			setFindCurr(sorted);
+			setOrder('asc');
+		}
+	};
 
 	useEffect(() => {
 		const fetchCurrency = () => {
@@ -27,10 +84,21 @@ function App() {
 				<div className='wholeTable'>
 					<table>
 						<thead>
-							<th className='number'>Rank</th>
-							<th className='name'>Name</th>
-							<th className='rank'>Price in USD</th>
-							<th className='history'>Value change in the last 24h</th>
+							<th className='number' onClick={() => sortRank('rank')}>
+								Rank
+							</th>
+							<th className='name' onClick={() => sorting('name')}>
+								Name
+							</th>
+							<th className='rank' onClick={() => sortPrice('priceUsd')}>
+								Price in USD
+							</th>
+							<th
+								className='history'
+								onClick={() => sortRateChange('changePercent24Hr')}
+							>
+								Value change in the last 24h
+							</th>
 						</thead>
 						<tbody>
 							<td>
