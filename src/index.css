@@ -63,3 +63,22 @@ input {
 input::placeholder {
 	color: black;
 }
+
+.arrow-down {
+	background-color: transparent;
+	border: none;
+	padding: 5px 10px;
+	margin: 0;
+	line-height: 1;
+	font-size: 15px;
+	color: black;
+	cursor: pointer;
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+.arrow-up {
+	outline: none !important;
+	box-shadow: none !important;
+	transform: rotate(180deg);
+}

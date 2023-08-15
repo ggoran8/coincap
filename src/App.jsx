@@ -3,19 +3,11 @@ import { useEffect, useState } from 'react';
 function App() {
 	const [inputValue, setInputValue] = useState('');
 	const [findCurr, setFindCurr] = useState();
-	const [order, setOrder] = useState('asc');
+	const [order, setOrder] = useState('dsc');
+	const [isActive, setIsActive] = useState(false);
 
-	const sorting = (col) => {
-		if (order === 'asc') {
-			const sorted = [...findCurr].sort((a, b) => (a[col] > b[col] ? 1 : -1));
-			setFindCurr(sorted);
-			setOrder('dsc');
-		}
-		if (order === 'dsc') {
-			const sorted = [...findCurr].sort((a, b) => (a[col] < b[col] ? 1 : -1));
-			setFindCurr(sorted);
-			setOrder('asc');
-		}
+	const handleClick = () => {
+		setIsActive((current) => !current);
 	};
 
 	const sortRank = () => {
@@ -26,6 +18,19 @@ function App() {
 		}
 		if (order === 'dsc') {
 			const sorted = [...findCurr].sort((a, b) => b.rank - a.rank);
+			setFindCurr(sorted);
+			setOrder('asc');
+		}
+	};
+
+	const sortName = (col) => {
+		if (order === 'asc') {
+			const sorted = [...findCurr].sort((a, b) => (a[col] > b[col] ? 1 : -1));
+			setFindCurr(sorted);
+			setOrder('dsc');
+		}
+		if (order === 'dsc') {
+			const sorted = [...findCurr].sort((a, b) => (a[col] < b[col] ? 1 : -1));
 			setFindCurr(sorted);
 			setOrder('asc');
 		}
@@ -86,29 +91,61 @@ function App() {
 				<div className='wholeTable'>
 					<table class='table table-dark  table-hover'>
 						<thead>
-							<th
-								scope='col'
-								className='number'
-								onClick={() => sortRank('rank')}
-							>
+							<th scope='col' className='number'>
 								Rank
+								<button
+									className={`${
+										isActive ? 'arrow-down' : 'arrow-up arrow-down'
+									}`}
+									onClick={() => {
+										sortRank('rank');
+										handleClick();
+									}}
+								>
+									▲
+								</button>
 							</th>
-							<th scope='col' className='name' onClick={() => sorting('name')}>
+							<th scope='col' className='name'>
 								Name
+								<button
+									className={`${
+										isActive ? 'arrow-down' : 'arrow-up arrow-down'
+									}`}
+									onClick={() => {
+										sortName('name');
+										handleClick();
+									}}
+								>
+									▲
+								</button>
 							</th>
-							<th
-								scope='col'
-								className='rank'
-								onClick={() => sortPrice('priceUsd')}
-							>
+							<th scope='col' className='rank'>
 								Price in USD
+								<button
+									className={`${
+										isActive ? 'arrow-down' : 'arrow-up arrow-down'
+									}`}
+									onClick={() => {
+										sortPrice('name');
+										handleClick();
+									}}
+								>
+									▲
+								</button>
 							</th>
-							<th
-								scope='col'
-								className='history'
-								onClick={() => sortRateChange('changePercent24Hr')}
-							>
+							<th scope='col' className='history'>
 								Value change in the last 24h
+								<button
+									className={`${
+										isActive ? 'arrow-down' : 'arrow-up arrow-down'
+									}`}
+									onClick={() => {
+										sortRateChange('name');
+										handleClick();
+									}}
+								>
+									▲
+								</button>
 							</th>
 						</thead>
 						<tbody>
