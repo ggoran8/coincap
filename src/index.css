@@ -64,15 +64,60 @@ input::placeholder {
 	color: black;
 }
 
+.bitcoin-container,
+.ethereum-container,
+.tether-container,
+.bnb.container {
+	position: absolute;
+	height: 0px;
+	width: 0px;
+}
+
+.bitcoin {
+	display: inline;
+	height: 200px;
+	width: 200px;
+	position: fixed;
+	top: 150px;
+	left: 125px;
+	animation: animacija infinite 0.8s alternate ease-in-out;
+}
+
+.ethereum {
+	display: inline;
+	height: 200px;
+	width: 200px;
+	position: fixed;
+	top: 480px;
+	left: 125px;
+	animation: animacija infinite 0.8s alternate ease-in-out;
+}
+
+.tether {
+	display: inline;
+	height: 200px;
+	width: 200px;
+	position: fixed;
+	top: 150px;
+	right: 125px;
+	animation: animacija infinite 0.8s alternate ease-in-out;
+}
+
+.bnb {
+	display: inline;
+	height: 200px;
+	width: 200px;
+	position: fixed;
+	top: 480px;
+	right: 125px;
+	animation: animacija infinite 0.8s alternate ease-in-out;
+}
+
 .arrow-down {
 	background-color: transparent;
 	border: none;
 	padding: 5px 10px;
-	margin: 0;
 	line-height: 1;
-	font-size: 15px;
-	color: black;
-	cursor: pointer;
 	outline: none !important;
 	box-shadow: none !important;
 }
@@ -81,4 +126,13 @@ input::placeholder {
 	outline: none !important;
 	box-shadow: none !important;
 	transform: rotate(180deg);
+}
+
+@keyframes animacija {
+	from {
+		transform: translateY(0);
+	}
+	to {
+		transform: translateY(100px);
+	}
 }

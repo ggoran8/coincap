@@ -1,4 +1,8 @@
 import { useEffect, useState } from 'react';
+import bitcoin from './bitcoin.png';
+import ethereum from './ethereum.png';
+import tether from './tether.png';
+import bnb from './bnb.png';
 
 function App() {
 	const [inputValue, setInputValue] = useState('');
@@ -86,6 +90,18 @@ function App() {
 					value={inputValue}
 					onChange={(e) => setInputValue(e.target.value)}
 				/>
+			</div>
+			<div className='bitcoin-container'>
+				<img className='bitcoin' src={bitcoin} alt='Bitcoin logo' />
+			</div>
+			<div className='ethereum-container'>
+				<img className='ethereum' src={ethereum} alt='Ethereum logo' />
+			</div>
+			<div className='tether-container'>
+				<img className='tether' src={tether} alt='Tether logo' />
+			</div>
+			<div className='bnb-container'>
+				<img className='bnb' src={bnb} alt='Bnb logo' />
 			</div>
 			{findCurr ? (
 				<div className='wholeTable'>
