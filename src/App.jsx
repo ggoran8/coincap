@@ -3,6 +3,7 @@ import bitcoin from './bitcoin.png';
 import ethereum from './ethereum.png';
 import tether from './tether.png';
 import bnb from './bnb.png';
+import ScrollUpButton from './components/ScrollUpButton';
 
 function App() {
 	const [inputValue, setInputValue] = useState('');
@@ -82,138 +83,140 @@ function App() {
 	}, [inputValue]);
 
 	return (
-		<div className='app'>
-			<div className='input'>
-				<input
-					type='text'
-					placeholder='Search for specific cryptocurrency'
-					value={inputValue}
-					onChange={(e) => setInputValue(e.target.value)}
-				/>
-			</div>
-			<div className='bitcoin-container'>
-				<img className='bitcoin' src={bitcoin} alt='Bitcoin logo' />
-			</div>
-			<div className='ethereum-container'>
-				<img className='ethereum' src={ethereum} alt='Ethereum logo' />
-			</div>
-			<div className='tether-container'>
-				<img className='tether' src={tether} alt='Tether logo' />
-			</div>
-			<div className='bnb-container'>
-				<img className='bnb' src={bnb} alt='Bnb logo' />
-			</div>
-			{findCurr ? (
-				<div className='wholeTable'>
-					<table class='table table-dark  table-hover'>
-						<thead>
-							<th scope='col' className='number'>
-								Rank
-								<button
-									className={`${
-										isActive ? 'arrow-down' : 'arrow-up arrow-down'
-									}`}
-									onClick={() => {
-										sortRank('rank');
-										handleClick();
-									}}
-								>
-									▲
-								</button>
-							</th>
-							<th scope='col' className='name'>
-								Name
-								<button
-									className={`${
-										isActive ? 'arrow-down' : 'arrow-up arrow-down'
-									}`}
-									onClick={() => {
-										sortName('name');
-										handleClick();
-									}}
-								>
-									▲
-								</button>
-							</th>
-							<th scope='col' className='rank'>
-								Price in USD
-								<button
-									className={`${
-										isActive ? 'arrow-down' : 'arrow-up arrow-down'
-									}`}
-									onClick={() => {
-										sortPrice('name');
-										handleClick();
-									}}
-								>
-									▲
-								</button>
-							</th>
-							<th scope='col' className='history'>
-								Value change in the last 24h
-								<button
-									className={`${
-										isActive ? 'arrow-down' : 'arrow-up arrow-down'
-									}`}
-									onClick={() => {
-										sortRateChange('name');
-										handleClick();
-									}}
-								>
-									▲
-								</button>
-							</th>
-						</thead>
-						<tbody>
-							<td>
-								{findCurr.map((item) => (
-									<tr>
-										<th scope='row' className='number'>
-											{item.rank}
-										</th>
-									</tr>
-								))}
-							</td>
-							<td>
-								{findCurr.map((item) => (
-									<tr>
-										<td className='tData'>{item.name}</td>
-									</tr>
-								))}
-							</td>
-							<td>
-								{findCurr.map((item) =>
-									item.priceUsd === null ? (
-										<tr>
-											<td>No data.</td>
-										</tr>
-									) : (
-										<tr>
-											<td className='tData'>
-												${item.priceUsd.toString().slice(0, 8)}
-											</td>
-										</tr>
-									)
-								)}
-							</td>
-							<td>
-								{findCurr.map((item) =>
-									item.changePercent24Hr === null ? (
-										<tr>
-											<td>No data.</td>
-										</tr>
-									) : (
-										<tr>
-											<td className='tData'>
-												{item.changePercent24Hr.toString().slice(0, 8)}$
-											</td>
-										</tr>
-									)
-								)}
-							</td>
-						</tbody>
-					</table>
-					{/* <ol className='name'>
+		<>
+			<div className='app'>
+				<div className='input'>
+					<input
+						type='text'
+						placeholder='Search for specific cryptocurrency'
+						value={inputValue}
+						onChange={(e) => setInputValue(e.target.value)}
+					/>
+				</div>
+				<div className='bitcoin-container'>
+					<img className='bitcoin' src={bitcoin} alt='Bitcoin logo' />
+				</div>
+				<div className='ethereum-container'>
+					<img className='ethereum' src={ethereum} alt='Ethereum logo' />
+				</div>
+				<div className='tether-container'>
+					<img className='tether' src={tether} alt='Tether logo' />
+				</div>
+				<div className='bnb-container'>
+					<img className='bnb' src={bnb} alt='Bnb logo' />
+				</div>
+				{findCurr && (
+					<>
+						<div className='wholeTable'>
+							<table class='table table-dark  table-hover'>
+								<thead>
+									<th scope='col' className='number'>
+										Rank
+										<button
+											className={`${
+												isActive ? 'arrow-down' : 'arrow-up arrow-down'
+											}`}
+											onClick={() => {
+												sortRank('rank');
+												handleClick();
+											}}
+										>
+											▲
+										</button>
+									</th>
+									<th scope='col' className='name'>
+										Name
+										<button
+											className={`${
+												isActive ? 'arrow-down' : 'arrow-up arrow-down'
+											}`}
+											onClick={() => {
+												sortName('name');
+												handleClick();
+											}}
+										>
+											▲
+										</button>
+									</th>
+									<th scope='col' className='rank'>
+										Price in USD
+										<button
+											className={`${
+												isActive ? 'arrow-down' : 'arrow-up arrow-down'
+											}`}
+											onClick={() => {
+												sortPrice('name');
+												handleClick();
+											}}
+										>
+											▲
+										</button>
+									</th>
+									<th scope='col' className='history'>
+										Value change in the last 24h
+										<button
+											className={`${
+												isActive ? 'arrow-down' : 'arrow-up arrow-down'
+											}`}
+											onClick={() => {
+												sortRateChange('name');
+												handleClick();
+											}}
+										>
+											▲
+										</button>
+									</th>
+								</thead>
+								<tbody>
+									<td>
+										{findCurr.map((item) => (
+											<tr>
+												<th scope='row' className='number'>
+													{item.rank}
+												</th>
+											</tr>
+										))}
+									</td>
+									<td>
+										{findCurr.map((item) => (
+											<tr>
+												<td className='tData'>{item.name}</td>
+											</tr>
+										))}
+									</td>
+									<td>
+										{findCurr.map((item) =>
+											item.priceUsd === null ? (
+												<tr>
+													<td>No data.</td>
+												</tr>
+											) : (
+												<tr>
+													<td className='tData'>
+														${item.priceUsd.toString().slice(0, 8)}
+													</td>
+												</tr>
+											)
+										)}
+									</td>
+									<td>
+										{findCurr.map((item) =>
+											item.changePercent24Hr === null ? (
+												<tr>
+													<td>No data.</td>
+												</tr>
+											) : (
+												<tr>
+													<td className='tData'>
+														{item.changePercent24Hr.toString().slice(0, 8)}$
+													</td>
+												</tr>
+											)
+										)}
+									</td>
+								</tbody>
+							</table>
+							{/* <ol className='name'>
 						{findCurr.map((item) => (
 							<li>{item.name}</li>
 						))}
@@ -223,11 +226,12 @@ function App() {
 							<li>{item.rank}</li>
 						))}
 					</ol> */}
-				</div>
-			) : (
-				<p>No data.</p>
-			)}
-		</div>
+						</div>
+					</>
+				)}
+			</div>
+			<ScrollUpButton />
+		</>
 	);
 }
 
