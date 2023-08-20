@@ -1,9 +1,6 @@
 import { useEffect, useState } from 'react';
-import bitcoin from './bitcoin.png';
-import ethereum from './ethereum.png';
-import tether from './tether.png';
-import bnb from './bnb.png';
 import ScrollUpButton from './components/ScrollUpButton';
+import images from './assets/icons';
 
 function App() {
 	const [inputValue, setInputValue] = useState('');
@@ -94,16 +91,16 @@ function App() {
 					/>
 				</div>
 				<div className='bitcoin-container'>
-					<img className='bitcoin' src={bitcoin} alt='Bitcoin logo' />
+					<img className='bitcoin' src={images.bitcoin} alt='Bitcoin logo' />
 				</div>
 				<div className='ethereum-container'>
-					<img className='ethereum' src={ethereum} alt='Ethereum logo' />
+					<img className='ethereum' src={images.ethereum} alt='Ethereum logo' />
 				</div>
 				<div className='tether-container'>
-					<img className='tether' src={tether} alt='Tether logo' />
+					<img className='tether' src={images.tether} alt='Tether logo' />
 				</div>
 				<div className='bnb-container'>
-					<img className='bnb' src={bnb} alt='Bnb logo' />
+					<img className='bnb' src={images.bnb} alt='Bnb logo' />
 				</div>
 				{findCurr && (
 					<>
