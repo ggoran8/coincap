@@ -154,3 +154,18 @@ input::placeholder {
 .back-to-top:hover {
 	background: red;
 }
+
+.buttonStyle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	background-color: rgb(10, 14, 21);
+	border-radius: 8px;
+	cursor: pointer;
+	color: white;
+	height: 42px;
+	width: 42px;
+	bottom: 50px;
+	right: 200px;
+}

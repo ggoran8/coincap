@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { ReactComponent as Arrowup } from '../assets/icons/arrow-up.svg';
 
 const ScrollUpButton = () => {
 	const [scrollUpButton, setScrollUpButton] = useState(false);
@@ -23,18 +24,8 @@ const ScrollUpButton = () => {
 	return (
 		<div>
 			{scrollUpButton && (
-				<button
-					style={{
-						position: 'fixed',
-						bottom: '50px',
-						right: '50px',
-						height: '50px',
-						width: '50px',
-						fontSize: '50px',
-					}}
-					onClick={scrollToTop}
-				>
-					^
+				<button className='buttonStyle' onClick={scrollToTop}>
+					<Arrowup />
 				</button>
 			)}
 		</div>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import ScrollUpButton from './components/ScrollUpButton';
-import images from './assets/icons';
+// import images from './assets/icons';
 
 function App() {
 	const [inputValue, setInputValue] = useState('');
@@ -90,7 +90,7 @@ function App() {
 						onChange={(e) => setInputValue(e.target.value)}
 					/>
 				</div>
-				<div className='bitcoin-container'>
+				{/* <div className='bitcoin-container'>
 					<img className='bitcoin' src={images.bitcoin} alt='Bitcoin logo' />
 				</div>
 				<div className='ethereum-container'>
@@ -101,7 +101,7 @@ function App() {
 				</div>
 				<div className='bnb-container'>
 					<img className='bnb' src={images.bnb} alt='Bnb logo' />
-				</div>
+				</div> */}
 				{findCurr && (
 					<>
 						<div className='wholeTable'>
