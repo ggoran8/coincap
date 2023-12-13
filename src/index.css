@@ -169,3 +169,92 @@ input::placeholder {
 	bottom: 50px;
 	right: 200px;
 }
+
+@media (max-width: 1024px) {
+	.name {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+}
+
+@media (max-width: 768px) {
+	.wholeTable {
+		width: 100%;
+	}
+
+	.table {
+		width: 80%;
+		margin: 0 auto;
+	}
+
+	.name {
+		display: block;
+		padding: 0;
+		border: none;
+	}
+
+	input {
+		width: 50%;
+	}
+
+	.buttonStyle {
+		right: 20px;
+	}
+}
+
+@media (max-width: 425px) {
+	.wholeTable {
+		width: 100%;
+	}
+
+	.name {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		border: none;
+	}
+
+	.history {
+		display: none;
+	}
+
+	input {
+		width: 80%;
+	}
+
+	.buttonStyle {
+		width: 35px;
+		height: 35px;
+		right: 15px;
+	}
+}
+
+@media (max-width: 320px) {
+	.wholeTable {
+	}
+
+	.number {
+		display: none;
+	}
+
+	.history {
+		display: none;
+	}
+
+	input {
+		width: 100%;
+	}
+
+	.buttonStyle {
+		width: 35px;
+		height: 35px;
+		right: 15px;
+	}
+
+	.arrowPrice {
+		margin-left: 32px;
+	}
+}

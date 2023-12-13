@@ -105,8 +105,8 @@ function App() {
 				{findCurr && (
 					<>
 						<div className='wholeTable'>
-							<table class='table table-dark  table-hover'>
-								<thead>
+							<table class='table table-dark table-hover'>
+								<tr className='headerTop'>
 									<th scope='col' className='number'>
 										Rank
 										<button
@@ -135,11 +135,13 @@ function App() {
 											▲
 										</button>
 									</th>
-									<th scope='col' className='rank'>
+									<th scope='col' className='price'>
 										Price in USD
 										<button
 											className={`${
-												isActive ? 'arrow-down' : 'arrow-up arrow-down'
+												isActive
+													? 'arrow-down'
+													: 'arrow-up arrow-down arrowPrice'
 											}`}
 											onClick={() => {
 												sortPrice('name');
@@ -150,7 +152,7 @@ function App() {
 										</button>
 									</th>
 									<th scope='col' className='history'>
-										Value change in the last 24h
+										24h change
 										<button
 											className={`${
 												isActive ? 'arrow-down' : 'arrow-up arrow-down'
@@ -163,9 +165,9 @@ function App() {
 											▲
 										</button>
 									</th>
-								</thead>
+								</tr>
 								<tbody>
-									<td>
+									<td className='number'>
 										{findCurr.map((item) => (
 											<tr>
 												<th scope='row' className='number'>
@@ -174,14 +176,14 @@ function App() {
 											</tr>
 										))}
 									</td>
-									<td>
+									<td className='name'>
 										{findCurr.map((item) => (
 											<tr>
-												<td className='tData'>{item.name}</td>
+												<td className='tData name'>{item.name}</td>
 											</tr>
 										))}
 									</td>
-									<td>
+									<td className='price'>
 										{findCurr.map((item) =>
 											item.priceUsd === null ? (
 												<tr>
@@ -189,14 +191,14 @@ function App() {
 												</tr>
 											) : (
 												<tr>
-													<td className='tData'>
+													<td className='tData price'>
 														${item.priceUsd.toString().slice(0, 8)}
 													</td>
 												</tr>
 											)
 										)}
 									</td>
-									<td>
+									<td className='history'>
 										{findCurr.map((item) =>
 											item.changePercent24Hr === null ? (
 												<tr>
@@ -204,7 +206,7 @@ function App() {
 												</tr>
 											) : (
 												<tr>
-													<td className='tData'>
+													<td className='tData history'>
 														{item.changePercent24Hr.toString().slice(0, 8)}$
 													</td>
 												</tr>
