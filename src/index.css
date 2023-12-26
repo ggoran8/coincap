@@ -233,9 +233,6 @@ input::placeholder {
 }
 
 @media (max-width: 320px) {
-	.wholeTable {
-	}
-
 	.number {
 		display: none;
 	}
